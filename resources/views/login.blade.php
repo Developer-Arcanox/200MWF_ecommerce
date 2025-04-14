@@ -12,7 +12,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    
+    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
 </head>
 
 <body>
@@ -92,7 +92,7 @@
                     </button>
 
                     <div class="login-footer">
-                        Don't have an account? <a href="#">Sign up</a>
+                        Don't have an account? <a href="{{ route('register.page') }}">Sign up</a>
                     </div>
                 </form>
             </div>
