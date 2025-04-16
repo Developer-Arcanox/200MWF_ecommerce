@@ -62,7 +62,7 @@
                 <div class="logo">ModernShop</div>
                 <h2 class="register-title">Create Your Account</h2>
 
-                <form id="registrationForm" action="{{ route('register.page') }}" method="post">
+                <form id="registrationForm" action="{{ route('register') }}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">

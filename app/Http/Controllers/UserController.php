@@ -5,17 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     function index()
     {
-        return view("welcome");
-    }
+        Auth::logout();
 
-    function showLoginForm()
-    {
-        return view("login");
+        return view("welcome");
     }
 
     function showRegisterForm()
@@ -34,5 +32,34 @@ class UserController extends Controller
         ]);
 
         return redirect("/login")->with("success", "Account created successfully");
+    }
+
+    function showLoginForm()
+    {
+        return view("login");
+    }
+
+    function login(Request $request)
+    {
+        if (Auth::attempt(["email" => $request->email, "password" => $request->password])) {
+            return redirect()->route("user.dashboard");
+        } else {
+            return redirect()->route("login.page");
+        }
+    }
+
+    function userDashboard()
+    {
+        return view("user.dashboard");
+    }
+
+    function adminDashboard()
+    {
+        return view("admin.dashboard");
+    }
+
+    function unauthorised()
+    {
+        return view("unauthorised");
     }
 }
